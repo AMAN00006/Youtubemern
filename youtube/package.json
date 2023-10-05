@@ -49,5 +49,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:4004/api/"
+  "proxy": "https://youtubeapis.vercel.app/"
 }
