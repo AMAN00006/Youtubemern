@@ -57,7 +57,7 @@ dotenv.config();
 //     );
 
 
-app.options('*',cors())
+app.use('*',cors())
 
 
 // Define the MongoDB connection string
