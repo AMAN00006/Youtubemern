@@ -21,13 +21,30 @@ dotenv.config();
 
 
 // Define CORS options
+// const corsOptions = {
+//     origin: 'https://youtbefrontend.vercel.app', 
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     credentials: true, // Enable cookies and authentication headers
+// };
+
+// // Enable CORS with the defined options
+// app.use(cors(corsOptions));
+
+
+
+// Enable CORS for specific origins (replace with your frontend URL)
+const allowedOrigins = ['https://youtbefrontend.vercel.app'];
 const corsOptions = {
-    origin: 'https://youtbefrontend.vercel.app', 
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Enable cookies and authentication headers
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // Allow cookies to be sent with the request
 };
 
-// Enable CORS with the defined options
 app.use(cors(corsOptions));
 
 
