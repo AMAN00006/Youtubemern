@@ -72,7 +72,7 @@ mongoose.connect('mongodb+srv://aman:aman9616223392@cluster0.rr10twt.mongodb.net
 
 
 const corsOptions = {
-    origin: 'http://localhost:3000', // Replace with your client's domain
+    origin: 'https://youtbefrontend.vercel.app', // Replace with your client's domain
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Enable cookies and authentication headers
 };
