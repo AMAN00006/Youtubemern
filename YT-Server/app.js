@@ -36,8 +36,9 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
   next();
 })
-app.options('*',cors())
 app.use(cors())
+app.options('*',cors())
+
 //use error all over in catch blocks
 app.use((err, req, res, next) => {
 
