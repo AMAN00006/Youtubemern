@@ -21,8 +21,7 @@ dotenv.config();
 const mongoDb = process.env.MONGO;
 
 const corsOptions = {
-    //origin: 'https://youtbefrontend.vercel.app', // Replace with your client's domain
-    origin: '*',
+    origin: 'https://youtbefrontend.vercel.app', // Replace with your client's domain
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Enable cookies and authentication headers
 };
