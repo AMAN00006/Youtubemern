@@ -15,17 +15,22 @@ const app = express();
 
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+
+const corsOptions = {
+    origin: 'https://youtbefrontend.vercel.app',
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Enable cookies and authentication headers
+};
+app.use(cors(corsOptions));
+
+
+
 dotenv.config();
 
 //mongo db url
 const mongoDb = process.env.MONGO;
 
-const corsOptions = {
-    origin: 'https://youtbefrontend.vercel.app/',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Enable cookies and authentication headers
-};
-app.use(cors(corsOptions));
+
 
 
 /*
