@@ -33,22 +33,28 @@ dotenv.config();
 
 
 // Define CORS options
-const allowedOrigins = ['https://youtbefrontend.vercel.app'];
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true, // Allow cookies to be sent with the request
-};
+// const allowedOrigins = ['https://youtbefrontend.vercel.app'];
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (allowedOrigins.indexOf(origin) !== -1) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   credentials: true, // Allow cookies to be sent with the request
+// };
 
 // Enable CORS with the defined options
-app.use(cors(corsOptions));
+//app.use(cors(corsOptions));
 
-
+app.use(
+      cors({
+        optionsSuccessStatus: 200,
+        origin: JSON.parse('https://youtbefrontend.vercel.app'),
+        // credentials: true,
+      }),
+    );
 
 
 // Define the MongoDB connection string
