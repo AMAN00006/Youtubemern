@@ -16,19 +16,41 @@ const app = express();
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
+dotenv.config();
+
+// Define the MongoDB connection string
+const mongoDb = process.env.MONGO;
+
+// Connect to MongoDB using Mongoose
+mongoose.connect(`mongodb+srv://aman:aman9616223392@cluster0.rr10twt.mongodb.net/Youtube?retryWrites=true&w=majority`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => {
+    console.log('MongoDB is connected');
+})
+.catch((err) => {
+    console.error('MongoDB connection error:', err);
+});
+
+
+
+
+
+// Define CORS options
 const corsOptions = {
-    origin: 'https://youtbefrontend.vercel.app',
+    origin: 'https://youtbefrontend.vercel.app', 
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Enable cookies and authentication headers
 };
+
+// Enable CORS with the defined options
 app.use(cors(corsOptions));
 
 
 
-dotenv.config();
 
-//mongo db url
-const mongoDb = process.env.MONGO;
+
 
 
 
@@ -74,9 +96,6 @@ mongoose.connect(mongoDb, { useNewUrlParser: true, useUnifiedTopology: true })
 //             console.error("Error connecting to MongoDB:", err);
 //         });
 // }
-
-
-mongoose.connect('mongodb+srv://aman:aman9616223392@cluster0.rr10twt.mongodb.net/Youtube?retryWrites=true&w=majority')
 
 // app.listen(4004, () => {
 //     connect(),
