@@ -48,13 +48,20 @@ dotenv.config();
 // Enable CORS with the defined options
 //app.use(cors(corsOptions));
 
-app.use(
-      cors({
+// app.use(
+//       cors({
+//         optionsSuccessStatus: 200,
+//         origin: JSON.parse('https://youtbefrontend.vercel.app'),
+//         // credentials: true,
+//       }),
+//     );
+
+
+app.options('*',cors({
         optionsSuccessStatus: 200,
         origin: JSON.parse('https://youtbefrontend.vercel.app'),
         // credentials: true,
-      }),
-    );
+      }))
 
 
 // Define the MongoDB connection string
