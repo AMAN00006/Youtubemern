@@ -70,7 +70,6 @@ mongoose.connect('mongodb+srv://aman:aman9616223392@cluster0.rr10twt.mongodb.net
 //         console.log("Connected at 4004 port")
 // })
 
-
 const corsOptions = {
     origin: 'https://youtbefrontend.vercel.app', // Replace with your client's domain
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
