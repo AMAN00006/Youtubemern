@@ -72,8 +72,8 @@ const Signup = () => {
             dispatch(signinSuccess(res.data));
             navigate("/signin");
         } catch (err) {
-            toast.error(err.response.data.message)
-            //  console.log("err in signup", err.response.data)
+            toast.error(err.response?.data?.message)
+             console.log("err in signup", err.response.data)
             dispatch(signininFailure());
 
 
