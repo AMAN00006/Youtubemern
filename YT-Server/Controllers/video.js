@@ -130,8 +130,11 @@ const addView = async (req, res, next) => {
 const random = async (req, res, next) => {
 
     try {
+     
+        
         //aggrgate function for random
         const videos = await Video.aggregate([{ $sample: { size: 40 } }]);
+             res.header('Access-Control-Allow-Origin', 'https://youtbefrontend.vercel.app');
         res.status(200).json(videos)
 
     }
