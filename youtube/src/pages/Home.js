@@ -16,6 +16,7 @@ const Container = styled.div`
 const Home = ({ type }) => {
 
     const [videos, setVideos] = useState([])
+  axios.defaults.withCredentials=true
 
     useEffect(() => {
         const fetchVideos = async () => {
