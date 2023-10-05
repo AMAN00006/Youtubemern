@@ -14,6 +14,7 @@ const signup = async (req, res, next) => {
         const existingUser = await User.findOne({ email: req.body.email });
         if (existingUser) {
             // If a user with the same email exists, respond with an error message
+            
             return res.status(400).json({ message: 'Hi user this email id is already exists.' });
         }
 
@@ -26,7 +27,7 @@ const signup = async (req, res, next) => {
 
         // Save the new user in MongoDB
         await newUser.save();
-
+    res.header('Access-Control-Allow-Origin', 'https://youtbefrontend.vercel.app');
         res.status(200).send("User has been created");
     } catch (err) {
         next(err);
@@ -73,6 +74,7 @@ const signin = async (req, res, next) => {
 
         // Send user data (excluding the password) in the response
         const { password: _, ...userData } = user._doc;
+            res.header('Access-Control-Allow-Origin', 'https://youtbefrontend.vercel.app');
         res.status(200).json(userData);
 
 
