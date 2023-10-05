@@ -18,6 +18,21 @@ const dotenv = require('dotenv');
 
 dotenv.config();
 
+
+
+// Define CORS options
+const corsOptions = {
+    origin: 'https://youtbefrontend.vercel.app', 
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Enable cookies and authentication headers
+};
+
+// Enable CORS with the defined options
+app.use(cors(corsOptions));
+
+
+
+
 // Define the MongoDB connection string
 const mongoDb = process.env.MONGO;
 
@@ -37,15 +52,7 @@ mongoose.connect(`mongodb+srv://aman:aman9616223392@cluster0.rr10twt.mongodb.net
 
 
 
-// Define CORS options
-const corsOptions = {
-    origin: 'https://youtbefrontend.vercel.app', 
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Enable cookies and authentication headers
-};
 
-// Enable CORS with the defined options
-app.use(cors(corsOptions));
 
 
 
