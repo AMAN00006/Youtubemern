@@ -125,7 +125,12 @@ mongoose.connect(mongoDb, { useNewUrlParser: true, useUnifiedTopology: true })
 //     connect(),
 //         console.log("Connected at 4004 port")
 // })
+const PORT = process.env.PORT || 4004; // Use the desired port (4004 in your example)
+const HOSTNAME = 'youtubeapis.vercel.app'; // Specify the hostname (without 'https://')
 
+app.listen(PORT, HOSTNAME, () => {
+  console.log(`Server is running at https://${HOSTNAME}:${PORT}`);
+});
 
 
 
