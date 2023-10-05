@@ -20,7 +20,7 @@ const Home = ({ type }) => {
     useEffect(() => {
         const fetchVideos = async () => {
             try {
-                const res = await axios.get(`http://localhost:4004/api/videos/${type}`, { withCredentials: true });
+                const res = await axios.get(`https://youtubeapis.vercel.app/api/videos/${type}`, { withCredentials: true });
                 //  console.log("Type prop:", type);
                 //console.log("Response from API:", res);
 
