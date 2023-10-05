@@ -2,7 +2,11 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
+const indexRouter = require('./routes/index');
+const usersRouter = require('./routes/users');
+const videoRouter = require('./routes/video');
+const commentRouter = require('./routes/comments');
+const authRouter = require('./routes/authentication');
 
 const cors = require("cors")
 const app = express();
@@ -13,14 +17,14 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // Define CORS options
-// const corsOptions = {
-//     origin: 'https://youtbefrontend.vercel.app', 
-//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-//     credentials: true, // Enable cookies and authentication headers
-// };
+const corsOptions = {
+    origin: 'https://youtbefrontend.vercel.app', 
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Enable cookies and authentication headers
+};
 
-// // Enable CORS with the defined options
-// app.use(cors(corsOptions));
+// Enable CORS with the defined options
+app.use(cors(corsOptions));
 
 // Define the MongoDB connection string
 const mongoDb = process.env.MONGO;
@@ -30,14 +34,14 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use((req, res, next) => {
-  res.setHeader("Access-Control-Allow-Origin", "*");
-  res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  next();
-})
-app.use(cors())
-app.options('*',cors())
+// app.use((req, res, next) => {
+//   res.setHeader("Access-Control-Allow-Origin", "*");
+//   res.setHeader("Access-Control-Allow-Methods", "POST, GET, PUT");
+//   res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+//   next();
+// })
+// app.use(cors())
+// app.options('*',cors())
 
 //use error all over in catch blocks
 app.use((err, req, res, next) => {
@@ -60,11 +64,7 @@ app.use('/api/users', usersRouter);
 app.use('/api/videos', videoRouter);
 app.use('/api/comments', commentRouter);
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
-const videoRouter = require('./routes/video');
-const commentRouter = require('./routes/comments');
-const authRouter = require('./routes/authentication');
+
 
 
 // Connect to MongoDB using Mongoose
