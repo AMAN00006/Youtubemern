@@ -18,6 +18,29 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
+// Additional CORS headers (if needed)
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
+
+// Connect to MongoDB using Mongoose
+mongoose.connect(`mongodb+srv://aman:aman9616223392@cluster0.rr10twt.mongodb.net/Youtube?retryWrites=true&w=majority`, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
+.then(() => {
+    console.log('MongoDB is connected');
+})
+.catch((err) => {
+    console.error('MongoDB connection error:', err);
+});
+
+
+
+
 
 //  CORS Configuration
 const corsOptions = {
@@ -27,14 +50,6 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 
-
-// Additional CORS headers (if needed)
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', ' https://youtbefrontend.vercel.app');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-});
 
 
 
@@ -55,17 +70,7 @@ app.use((err, req, res, next) => {
 
 
 
-// Connect to MongoDB using Mongoose
-mongoose.connect(`mongodb+srv://aman:aman9616223392@cluster0.rr10twt.mongodb.net/Youtube?retryWrites=true&w=majority`, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
-.then(() => {
-    console.log('MongoDB is connected');
-})
-.catch((err) => {
-    console.error('MongoDB connection error:', err);
-});
+
 
 
 const indexRouter = require('./routes/index');
