@@ -17,14 +17,27 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
+// CORS Configuration
+const corsOptions = {
+    origin: 'https://youtbefrontend.vercel.app', // Update to the correct client URL
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Enable cookies and authentication headers
+};
+
+app.use(cors(corsOptions));
 
 // Additional CORS headers (if needed)
+// This block is not necessary if you are using the cors middleware above.
+// Remove this block if it's causing conflicts.
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT');
+    res.setHeader('Access-Control-Allow-Origin', 'https://youtbefrontend.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
     next();
 });
+
+
 
 // Connect to MongoDB using Mongoose
 mongoose.connect(`mongodb+srv://aman:aman9616223392@cluster0.rr10twt.mongodb.net/Youtube?retryWrites=true&w=majority`, {
@@ -42,13 +55,6 @@ mongoose.connect(`mongodb+srv://aman:aman9616223392@cluster0.rr10twt.mongodb.net
 
 
 
-//  CORS Configuration
-const corsOptions = {
-    origin: 'https://youtbefrontend.vercel.app', // Update to the correct client URL
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Enable cookies and authentication headers
-};
-app.use(cors(corsOptions));
 
 
 
