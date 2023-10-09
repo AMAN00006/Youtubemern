@@ -25,7 +25,7 @@ const Home = ({ type }) => {
                   console.log("Type prop:", type);
                 //console.log("Response from API:", res);
 
-               // Check the structure of the API response
+            
             if (Array.isArray(res.data)) {
                 // If it's already an array, use it directly
                 setVideos(res.data);
