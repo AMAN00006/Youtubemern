@@ -25,13 +25,29 @@ const Home = ({ type }) => {
                   console.log("Type prop:", type);
                 //console.log("Response from API:", res);
 
-                // Filter out duplicate videos based on unique _id
-                const uniqueVideos = res.data.filter((video, index, self) =>
-                    index === self.findIndex((v) => v._id === video._id)
-                    //self is a reference to the original array, which is res.data in this case.
-                );
+               // Check the structure of the API response
+            if (Array.isArray(res.data)) {
+                // If it's already an array, use it directly
+                setVideos(res.data);
+            } else if (res.data.videos && Array.isArray(res.data.videos)) {
+                // If it's an object with a 'videos' property that's an array
+                setVideos(res.data.videos);
+            } else {
+                console.error("Invalid API response structure:", res.data);
+            }
 
-                setVideos(uniqueVideos);
+
+
+
+              
+
+                // // Filter out duplicate videos based on unique _id
+                // const uniqueVideos = res.data.filter((video, index, self) =>
+                //     index === self.findIndex((v) => v._id === video._id)
+                //     //self is a reference to the original array, which is res.data in this case.
+                // );
+
+                // setVideos(uniqueVideos);
 
             } catch (error) {
                 console.error("Error fetching videos:", error);
