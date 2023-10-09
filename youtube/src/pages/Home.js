@@ -22,7 +22,7 @@ const Home = ({ type }) => {
         const fetchVideos = async () => {
             try {
                 const res = await axios.get(`https://youtubeapis.vercel.app/api/videos/${type}`, { withCredentials: true });
-                //  console.log("Type prop:", type);
+                  console.log("Type prop:", type);
                 //console.log("Response from API:", res);
 
                 // Filter out duplicate videos based on unique _id
