@@ -18,13 +18,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 
-// Additional CORS headers (if needed)
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', ' https://youtbefrontend.vercel.app');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    next();
-});
 
 //  CORS Configuration
 const corsOptions = {
@@ -33,6 +26,15 @@ const corsOptions = {
     credentials: true, // Enable cookies and authentication headers
 };
 app.use(cors(corsOptions));
+
+
+// Additional CORS headers (if needed)
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', ' https://youtbefrontend.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    next();
+});
 
 
 
