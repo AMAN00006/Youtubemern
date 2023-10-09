@@ -16,13 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-// CORS Configuration
-const corsOptions = {
-    origin: 'https://youtbefrontend.vercel.app',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Enable cookies and authentication headers
-};
-app.use(cors(corsOptions));
+
 
 // Additional CORS headers (if needed)
 app.use((req, res, next) => {
@@ -31,6 +25,15 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     next();
 });
+
+//  CORS Configuration
+const corsOptions = {
+    origin: 'https://youtbefrontend.vercel.app', // Update to the correct client URL
+    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+    credentials: true, // Enable cookies and authentication headers
+};
+app.use(cors(corsOptions));
+
 
 
 //use error all over in catch blocks
