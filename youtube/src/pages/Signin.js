@@ -22,7 +22,7 @@ const Signin = () => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      const res = await axios.post("https://youtubeapis.vercel.app/api/auths/signin", { name, password },
+      const res = await axios.post("/api/auths/signin", { name, password },
                                    headers:{
         "Content-Type":"application/json"
       },
@@ -47,7 +47,7 @@ const Signin = () => {
     signInWithPopup(auth, provider)
       .then((result) => {
         axios
-          .post("http://localhost:4004/api/auths/google", {
+          .post("/api/auths/google", {
             name: result.user.displayName,
             email: result.user.email,
             img: result.user.photoURL,
