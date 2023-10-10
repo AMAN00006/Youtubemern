@@ -27,32 +27,25 @@ const corsOptions = {
 app.use(cors(corsOptions));
 
 // Additional CORS headers (if needed)
-// This block is not necessary if you are using the cors middleware above.
-// Remove this block if it's causing conflicts.
 
-// app.use((req, res, next) => {
-//     res.setHeader('Access-Control-Allow-Origin', 'https://youtbefrontend.vercel.app');
-//     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE');
-//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-//     res.setHeader('Access-Control-Allow-Credentials', 'true');
-//     next();
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://youtbefrontend.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    next();
+});
+
+
+
+
+
+// const port = process.env.PORT || 4004;
+// app.listen(port, () => {
+//   console.log(`Server is running on port ${port}`);
 // });
 
 
- app.use(function (req, res, next) {
-    //Enabling CORS
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Methods", "GET,HEAD,OPTIONS,POST,PUT");
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, 
-    Accept, x-client-key, x-client-token, x-client-secret, Authorization");
-      next();
-    });
-
-
-const port = process.env.PORT || 4004;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
 
 // Connect to MongoDB using Mongoose
 mongoose.connect(`mongodb+srv://aman:aman9616223392@cluster0.rr10twt.mongodb.net/Youtube?retryWrites=true&w=majority`, {
@@ -65,12 +58,6 @@ mongoose.connect(`mongodb+srv://aman:aman9616223392@cluster0.rr10twt.mongodb.net
 .catch((err) => {
     console.error('MongoDB connection error:', err);
 });
-
-
-
-
-
-
 
 
 
@@ -88,10 +75,6 @@ app.use((err, req, res, next) => {
         message
     })
 })
-
-
-
-
 
 
 const indexRouter = require('./routes/index');
