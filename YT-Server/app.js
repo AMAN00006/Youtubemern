@@ -37,7 +37,10 @@ app.use((req, res, next) => {
     next();
 });
 
-
+const port = process.env.PORT || 4004;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
 // Connect to MongoDB using Mongoose
 mongoose.connect(`mongodb+srv://aman:aman9616223392@cluster0.rr10twt.mongodb.net/Youtube?retryWrites=true&w=majority`, {
