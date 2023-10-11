@@ -23,7 +23,6 @@ const corsOptions = {
 //     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Enable cookies and authentication headers
- 'Access-Control-Allow-Origin', 'https://youtubefrontend-smoky.vercel.app'
 };
 app.use(cors(corsOptions));
 
