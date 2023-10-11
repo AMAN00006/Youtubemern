@@ -23,11 +23,10 @@ const Signin = () => {
     dispatch(loginStart());
     try {
       const res = await axios.post("/api/auths/signin", { name, password },
-                                   headers:{
-        "Content-Type":"application/json"
-      },
-        // Send name and password as an object
         {
+          headers: {
+            "Content-Type": "application/json",
+          }, // Set the request headers
           withCredentials: true, // Include credentials (cookies) in the request
         });
       dispatch(loginSuccess(res.data));
