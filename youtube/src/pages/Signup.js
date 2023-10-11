@@ -60,14 +60,7 @@ const Signup = () => {
         dispatch(signinStart());
 
         try {
-      //       const res = await axios.post("https://youtubeapis.vercel.app/api/auths/signup", { name, password, email }, // Send name and password,email as an object
-      //                                      headers:{
-      //   "Content-Type":"application/json"
-      // },
-      //           {
-      //               withCredentials: true,
-      //               // Include credentials (cookies) in the request
-      //           });
+     
 
             const res = await axios.post("https://youtubemern.vercel.app/api/auths/signup", { name, password, email }, {
     headers: {
