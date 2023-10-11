@@ -19,7 +19,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // CORS Configuration
 const corsOptions = {
-    origin: 'https://youtubefrontend-smoky.vercel.app', // Update to the correct client URL
+//    origin: 'https://youtubefrontend-smoky.vercel.app', // Update to the correct client URL
+     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Enable cookies and authentication headers
 };
