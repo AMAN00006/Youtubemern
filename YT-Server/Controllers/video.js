@@ -137,7 +137,7 @@ const random = async (req, res, next) => {
           const videos = await Video.aggregate([{ $sample: { size: 40 } }]);
         
         // Set the CORS header before sending the response
-        res.header('Access-Control-Allow-Origin', 'https://youtbefrontend.vercel.app');
+        res.header('Access-Control-Allow-Origin', 'https://youtubefrontend-smoky.vercel.app');
         
         res.status(200).json(videos);
 
