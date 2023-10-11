@@ -19,7 +19,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // CORS Configuration
 const corsOptions = {
-    origin: 'https://youtbefrontend.vercel.app', // Update to the correct client URL
+    origin: 'https://youtubefrontend-smoky.vercel.app', // Update to the correct client URL
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Enable cookies and authentication headers
 };
@@ -29,7 +29,7 @@ app.use(cors(corsOptions));
 // Additional CORS headers (if needed)
 
 app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://youtbefrontend.vercel.app');
+    res.setHeader('Access-Control-Allow-Origin', 'https://youtubefrontend-smoky.vercel.app');
     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE');
     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.setHeader('Access-Control-Allow-Credentials', 'true');
@@ -82,7 +82,7 @@ if(process.env.NODE_ENV=='production'){
 
     const path = require('path')
     app.get('/',(req,res)=>{
-        app.use(express.static(path.resolve(__dirname,'client', 'build')));
+        app.use(express.static(path.resolve(__dirname,'youtube', 'build')));
       res.sendFile(path.resolve(__dirname,'youtube','build','index.html'))
         
     })
