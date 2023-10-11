@@ -40,21 +40,7 @@ app.use((req, res, next) => {
 
 
 
-// const port = process.env.PORT || 4004;
-// app.listen(port, () => {
-//   console.log(`Server is running on port ${port}`);
-// });
 
-
-if(process.env.NODE_ENV=='production'){
-
-    const path = require('path')
-    app.get('/',(req,res)=>{
-        app.use(express.static(path.resolve(__dirname,'client', 'build')));
-      res.sendFile(path.resolve(__dirname,'youtube','build','index.html'))
-        
-    })
-}
 
 
 // Connect to MongoDB using Mongoose
@@ -85,6 +71,24 @@ app.use((err, req, res, next) => {
         message
     })
 })
+
+const port = process.env.PORT || 4004;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
+
+
+if(process.env.NODE_ENV=='production'){
+
+    const path = require('path')
+    app.get('/',(req,res)=>{
+        app.use(express.static(path.resolve(__dirname,'client', 'build')));
+      res.sendFile(path.resolve(__dirname,'youtube','build','index.html'))
+        
+    })
+}
+
+
 
 
 const indexRouter = require('./routes/index');
