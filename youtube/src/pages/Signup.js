@@ -69,7 +69,7 @@ const Signup = () => {
       //               // Include credentials (cookies) in the request
       //           });
 
-            const res = await axios.post("/api/auths/signup", { name, password, email }, {
+            const res = await axios.post("https://youtubemern.vercel.app/api/auths/signup", { name, password, email }, {
     headers: {
         "Content-Type": "application/json"
     },
