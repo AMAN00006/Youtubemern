@@ -72,21 +72,21 @@ app.use((err, req, res, next) => {
     })
 })
 
-const port = process.env.PORT || 4004;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
+// const port = process.env.PORT || 4004;
+// app.listen(port, () => {
+//   console.log(`Server is running on port ${port}`);
+// });
 
 
-if(process.env.NODE_ENV=='production'){
+// if(process.env.NODE_ENV=='production'){
 
-    const path = require('path')
-    app.get('/',(req,res)=>{
-        app.use(express.static(path.resolve(__dirname,'youtube', 'build')));
-      res.sendFile(path.resolve(__dirname,'youtube','build','index.html'))
+//     const path = require('path')
+//     app.get('/',(req,res)=>{
+//         app.use(express.static(path.resolve(__dirname,'youtube', 'build')));
+//       res.sendFile(path.resolve(__dirname,'youtube','build','index.html'))
         
-    })
-}
+//     })
+// }
 
 
 
