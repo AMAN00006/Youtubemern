@@ -22,7 +22,7 @@ const Signin = () => {
     e.preventDefault();
     dispatch(loginStart());
     try {
-      const res = await axios.post("/api/auths/signin", { name, password },
+      const res = await axios.post("https://youtubemern.vercel.app/api/auths/signin", { name, password },
         {
           headers: {
             "Content-Type": "application/json",
