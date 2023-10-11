@@ -19,12 +19,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // CORS Configuration
 const corsOptions = {
-//    origin: 'https://youtubefrontend-smoky.vercel.app', // Update to the correct client URL
-     origin: '*',
+ origin: 'https://youtubefrontend-smoky.vercel.app', // Update to the correct client URL
+//     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
     credentials: true, // Enable cookies and authentication headers
 };
-
 app.use(cors(corsOptions));
 
 // Additional CORS headers (if needed)
@@ -36,13 +35,6 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Credentials', 'true');
     next();
 });
-
-
-
-
-app.options('*', cors(corsOptions));
-
-
 
 // Connect to MongoDB using Mongoose
 mongoose.connect(`mongodb+srv://aman:aman9616223392@cluster0.rr10twt.mongodb.net/Youtube?retryWrites=true&w=majority`, {
@@ -73,10 +65,10 @@ app.use((err, req, res, next) => {
     })
 })
 
-// const port = process.env.PORT || 4004;
-// app.listen(port, () => {
-//   console.log(`Server is running on port ${port}`);
-// });
+const port = process.env.PORT || 4004;
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
+});
 
 
 // if(process.env.NODE_ENV=='production'){
