@@ -46,6 +46,16 @@ app.use((req, res, next) => {
 // });
 
 
+if(process.env.NODE_ENV=='production'){
+
+    const path = require('path')
+    app.get('/',(req,res)=>{
+        app.use(express.static(path.resolve(__dirname,'client', 'build')));
+      res.sendFile(path.resolve(__dirname,'youtube','build','index.html'))
+        
+    })
+}
+
 
 // Connect to MongoDB using Mongoose
 mongoose.connect(`mongodb+srv://aman:aman9616223392@cluster0.rr10twt.mongodb.net/Youtube?retryWrites=true&w=majority`, {
