@@ -67,7 +67,7 @@ const Menu = ({ darkMode, setDarkMode, isListIconClicked, toggleMenu }) => {
                         <Item >
                             <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
                                 <HomeIcon />
-                                Homenn
+                                Home
                             </Link>
                         </Item>
                         <Item>
