@@ -1,4 +1,6 @@
 {
+  "version":2,
+  "name": "yt-server",
 
 "builds":[
   {
@@ -8,7 +10,7 @@
 ],
   "routes":[
     {
-      "src":"/.*",
+      "src":"/(.*)",
       "dest":"app.js"
     }
   ]
