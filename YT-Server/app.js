@@ -16,25 +16,25 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use(cors())
 // CORS Configuration
-const corsOptions = {
- origin: 'https://youtubefrontend-smoky.vercel.app', // Update to the correct client URL
-//     origin: '*',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true, // Enable cookies and authentication headers
-};
-app.use(cors(corsOptions));
+// const corsOptions = {
+//  origin: 'https://youtubefrontend-smoky.vercel.app', // Update to the correct client URL
+// //     origin: '*',
+//     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+//     credentials: true, // Enable cookies and authentication headers
+// };
+// app.use(cors(corsOptions));
 
 // Additional CORS headers (if needed)
 
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', 'https://youtubefrontend-smoky.vercel.app');
-    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-    res.setHeader('Access-Control-Allow-Credentials', 'true');
-    next();
-});
+// app.use((req, res, next) => {
+//     res.setHeader('Access-Control-Allow-Origin', 'https://youtubefrontend-smoky.vercel.app');
+//     res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PUT, PATCH, DELETE');
+//     res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+//     res.setHeader('Access-Control-Allow-Credentials', 'true');
+//     next();
+// });
 
 // Connect to MongoDB using Mongoose
 mongoose.connect(`mongodb+srv://aman:aman9616223392@cluster0.rr10twt.mongodb.net/Youtube?retryWrites=true&w=majority`, {
