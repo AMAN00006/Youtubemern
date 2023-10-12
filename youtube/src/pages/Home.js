@@ -34,7 +34,7 @@ const Home = ({ type }) => {
                 setVideos(uniqueVideos);
 
             } catch (error) {
-                console.error("Error fetching videos in home pages:", error);
+                console.error("Error fetching videos in home.js pages:", error);
             }
         };
         fetchVideos();
